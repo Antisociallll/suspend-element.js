@@ -1,0 +1,187 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
+
+    <!-- 库导入 /////////////////////////////////////////////////////////////////////////////////-->
+    <script src="http://www.ga3hu.com/local-library/web/jquery-3.3.1.min.js"></script>
+    <script src="ShowInfoModules.js" charset="utf-8"></script>
+    <script src="float-element.js" charset="utf-8"></script>
+
+    <!-- 内部样式 ///////////////////////////////////////////////////////////////////////////////-->
+    <style type="text/css">
+        *{
+            box-sizing: border-box;
+            font-family: microsoft yahei ui;
+            font-size: small;
+        }
+        #demo-container{
+            width: 500px;
+            /*width: 502px;*/
+            height: 500px;
+            /*height: 502px;*/
+            /*border: 1px solid black;*/
+            overflow: auto;
+        }
+        #pad-height{
+            height: 50px;
+            width: 200px;
+            background-color: rgba(0, 0, 255, 0.1);
+        }
+        .axis-x{
+            width: 800px;
+            height: 50px;
+            background-color: grey;
+        }
+        .axis-y{
+            width: 50px;
+            height: 800px;
+            /*height: 200px;*/
+            background-color: coral;
+        }
+        #info{
+            position: fixed;
+            width: 500px;
+            top: 0px;
+            right: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo-container">
+        <div id="pad-height">举高高 200x50</div>
+        <div id="demo1" class="axis-x">固定在横轴上 800x50 abcdefghijklmnopqrstuvwxyz1234567890</div>
+        <div id="demo2" class="axis-y">固<br>定<br>在<br>竖<br>轴<br>上 50x800</div>
+        <div id="demo3" class="axis-x">带上下约束，随滚轴浮动 800x50 abcdefghijklmnopqrstuvwxyz1234567890</div>
+        <div id="demo4" class="axis-y">撑<br>开<br>高<br>度<br>用<br>的 50x800</div>
+        <div id="demo5" class="axis-y">撑<br>开<br>高<br>度<br>二<br>号 50x800</div>
+        <div id="demo6" class="axis-y">撑<br>开<br>高<br>度<br>三<br>号 50x800</div>
+    </div>
+    * 从效果上看，好像，html文档的坐标起始原点是在（0,0）的。<br>
+    * offset坐标算的是元素内容的最左上角像素，margin不算。<br>
+    * client宽高不包括border<br>
+    <div id="info">
+        <div id="initial-info">
+            ## 初始化数据<hr>
+            悬停元素---------------------------------------------------<br>
+            <div class="element">
+                &emsp;&emsp;offset 定位{ x, y }：<span class="offset"></span>
+                <br>
+                &emsp;&emsp;offset 上边：<span class="top-edge"></span>
+                <br>
+                &emsp;&emsp;offset 下边：<span class="bottom-edge"></span>
+                <br>
+                &emsp;&emsp;offset 左边：<span class="left-edge"></span>
+                <br>
+                &emsp;&emsp;offset 右边：<span class="right-edge"></span>
+                <br>
+            </div>
+            相对容器---------------------------------------------------<br>
+            <div class="relative-container">
+                &emsp;&emsp;offset 定位{ x, y }：<span class="offset"></span>
+                <br>
+                &emsp;&emsp;offset 上边：<span class="top-edge"></span>
+                <br>
+                &emsp;&emsp;offset 下边：<span class="bottom-edge"></span>
+                <br>
+                &emsp;&emsp;offset 左边：<span class="left-edge"></span>
+                <br>
+                &emsp;&emsp;offset 右边：<span class="right-edge"></span>
+                <br>
+                &emsp;&emsp;client 高度：<span class="client-height"></span>
+                <br>
+                &emsp;&emsp;client 宽度：<span class="client-width"></span>
+                <br>
+            </div>
+            响应容器---------------------------------------------------<br>
+            <div class="respond-container">
+                &emsp;&emsp;向下滚动：<span class="scroll-down"></span>
+                <br>
+                &emsp;&emsp;向右滚动：<span class="scroll-forward"></span>
+                <br>
+            </div>
+        </div>
+
+        <br>
+
+        <div id="scroll-info">
+            ## 滚动时数据<hr>
+            悬停元素---------------------------------------------------<br>
+            <div class="element">
+                &emsp;&emsp;offset 定位{ x, y }：<span class="offset"></span>
+                <br>
+                &emsp;&emsp;offset 上边：<span class="top-edge"></span>
+                <br>
+                &emsp;&emsp;offset 下边：<span class="bottom-edge"></span>
+                <br>
+                &emsp;&emsp;offset 左边：<span class="left-edge"></span>
+                <br>
+                &emsp;&emsp;offset 右边：<span class="right-edge"></span>
+            </div>
+            相对容器---------------------------------------------------<br>
+            <div class="relative-container">
+                &emsp;&emsp;offset 定位{ x, y }：<span class="offset"></span>
+                <br>
+                &emsp;&emsp;offset 上边：<span class="top-edge"></span>
+                <br>
+                &emsp;&emsp;offset 下边：<span class="bottom-edge"></span>
+                <br>
+                &emsp;&emsp;offset 左边：<span class="left-edge"></span>
+                <br>
+                &emsp;&emsp;offset 右边：<span class="right-edge"></span>
+            </div>
+            响应容器---------------------------------------------------<br>
+            <div class="respond-container">
+                &emsp;&emsp;向下滚动：<span class="scroll-down"></span>
+                <br>
+                &emsp;&emsp;向右滚动：<span class="scroll-forward"></span>
+                <br>
+            </div>
+            悬停元素距相对容器边距---------------------------------------<br>
+            <div class="relative-away">
+                &emsp;&emsp;上边距：<span class="top-away"></span>
+                <br>
+                &emsp;&emsp;下边距：<span class="bottom-away"></span>
+                <br>
+                &emsp;&emsp;左边距：<span class="left-away"></span>
+                <br>
+                &emsp;&emsp;右边距：<span class="right-away"></span>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- 行为脚本 ///////////////////////////////////////////////////////////////////////////////////-->
+<script type="text/javascript">
+/*
+    $("#demo1").floatElement
+    (
+        //nothing yet
+        {
+            respondTo:     "#demo-container",
+            relativeTo:    "#demo-container",
+            listenType:    "once",
+            top:           20,
+            left:          -100,
+        }
+
+    );
+*/
+    $("#demo3").floatElement
+    (
+        //nothing yet
+        {
+            respondTo:     "#demo-container",
+            relativeTo:    "#demo-container",
+            listenType:    "once",
+            top:           20,
+            bottom:        100,
+            left:          -100,
+        }
+
+    );
+
+</script>
+
+</html>
