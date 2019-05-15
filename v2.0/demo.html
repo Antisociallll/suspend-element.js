@@ -2,65 +2,53 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html"; charset="utf-8">
-
-    <!-- 库导入 /////////////////////////////////////////////////////////////////////////////////-->
-    <script src="D:/Workspace/OneDrive/HTML works/LIBRARY_front_end/jquery-3.3.1.min.js"></script>
-    <script src="ShowInfoModules.js" charset="utf-8"></script>
-    <script src="float-element.js" charset="utf-8"></script>
-
-    <!-- 内部样式 ///////////////////////////////////////////////////////////////////////////////-->
-    <style type="text/css">
-        *{
-            box-sizing: border-box;
-            font-family: microsoft yahei ui;
-            font-size: small;
-        }
-        #demo-container{
-            width: 500px;
-            /*width: 502px;*/
-            height: 500px;
-            /*height: 502px;*/
-            /*border: 1px solid black;*/
-            overflow: auto;
-        }
-        #pad-height{
-            height: 50px;
-            width: 200px;
-            background-color: rgba(0, 0, 255, 0.1);
-        }
-        .axis-x{
-            width: 800px;
-            height: 50px;
-            background-color: grey;
-        }
-        .axis-y{
-            width: 50px;
-            height: 800px;
-            /*height: 200px;*/
-            background-color: coral;
-        }
-        #info{
-            position: fixed;
-            width: 500px;
-            top: 0px;
-            right: 0px;
-        }
-    </style>
+    <title>demo</title>
 </head>
+
+<!-- 库导入 /////////////////////////////////////////////////////////////////////////////////-->
+<script src="D:/Workspace/OneDrive/HTML works/LIBRARY_front_end/jquery-3.3.1.min.js"></script>
+<script src="float-element.js" charset="utf-8"></script>
+
+<!-- 样式 ///////////////////////////////////////////////////////////////////////////////////-->
+<link rel="stylesheet" href="demo.css">
 
 <body>
     <div id="demo-container">
-        <div id="pad-height">举高高 200x50</div>
-        <div id="demo1" class="axis-x">demo1. 固定在横轴上 800x50 abcdefghijklmnopqrstuvwxyz1234567890</div>
-        <div id="demo2" class="axis-y">demo2. 固<br>定<br>在<br>竖<br>轴<br>上 50x800</div>
-        <div id="demo3" class="axis-x">demo3. 带上下约束，随滚轴浮动 800x50 abcdefghijklmnopqrstuvwxyz1234567890</div>
-        <div id="demo4" class="axis-y">demo4. 撑<br>开<br>高<br>度<br>用<br>的 50x800</div>
-        <div id="demo5" class="axis-y">demo5. 撑<br>开<br>高<br>度<br>二<br>号 50x800</div>
-        <div id="demo6" class="axis-y">demo6. 撑<br>开<br>高<br>度<br>三<br>号 50x800</div>
+        <div id="pad-height">
+            举高高 200x50
+        </div>
+        <div id="demo1" class="axis-x">
+            demo1. 固定在横轴上 800x50 abcdefghijklmnopqrstuvwxyz1234567890
+        </div>
+        <div id="demo8">
+            demo8. 撑开宽度
+        </div>
+        <div id="demo7" class="island">
+            demo7. 孤岛式
+        </div>
+        <div id="demo2" class="axis-y">
+            demo2. 固<br>定<br>在<br>竖<br>轴<br>上 50x800
+        </div>
+
+        <div id="demo3" class="axis-x">
+            demo3. 带上下约束，随滚轴浮动 800x50 abcdefghijklmnopqrstuvwxyz1234567890
+        </div>
+        <div id="demo4" class="axis-y">
+            demo4. 撑<br>开<br>高<br>度<br>用<br>的 50x800
+        </div>
+        <div id="demo5" class="axis-y">
+            demo5. 撑<br>开<br>高<br>度<br>二<br>号 50x800
+        </div>
+        <div id="demo6" class="axis-y">
+            demo6. 撑<br>开<br>高<br>度<br>三<br>号 50x800
+        </div>
+
     </div>
+
     * 从效果上看，好像，html文档的坐标起始原点是在（0,0）的。<br>
     * offset坐标算的是元素内容的最左上角像素，margin不算。<br>
     * client宽高不包括border<br>
+
     <div id="info">
         <div id="initial-info">
             ## 初始化数据<hr>
@@ -154,34 +142,21 @@
 
 <!-- 行为脚本 ///////////////////////////////////////////////////////////////////////////////////-->
 <script type="text/javascript">
-/*
-    $("#demo1").floatElement
+
+    //注：搜狗浏览器默认滚动条宽度就是17px
+
+    $("#demo7").floatElement
     (
-        //nothing yet
         {
             respondTo:     "#demo-container",
-            relativeTo:    "#demo-container",
+            relativeTo:    "self",
             listenType:    "once",
             top:           20,
-            left:          -100,
+            bottom:        50,
+            left:          100,
+            //right:         100,
         }
-
     );
-*/
-    $("#demo3").floatElement
-    (
-        //nothing yet
-        {
-            respondTo:     "#demo-container",
-            relativeTo:    "#demo-container",
-            listenType:    "once",
-            top:           20,
-            bottom:        17,    //因为搜狗浏览器默认滚动条宽度就是17px
-            left:          -100,
-        }
-
-    );
-
 </script>
 
 </html>

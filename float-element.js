@@ -17,13 +17,13 @@
             var defaults =
                 {
                     respondTo:     "parent",
-                    relativeTo:    "parent",     //第二种方式是self。相对于自己的正常位置运动，就是最常见简单的那种。
-                    listenType:    "once",       //第二种方式是always。对于每次滚动重新获取一次当前相对容器数据。
-                    top:           "initial",    //第二种方式是free。该运动方向上不作约束
-                    bottom:        "initial",    //给定边距必须都是正值，
+                    relativeTo:    "parent",     //或self。相对于自己的正常位置运动，就是最常见简单的那种。
+                    listenType:    "once",       //或always。对于每次滚动重新获取一次当前相对容器数据。
+                    top:           "initial",    //或free。该运动方向上不作约束。
+                    bottom:        "initial",    //给定边距必须都是正值，负值的话元素就偏移到视窗外了。
                     left:          "initial",
                     right:         "initial",
-                    destroy:        false,        //为选中的元素解除已有的悬停性质绑定
+                    destroy:        false,        //为选中的元素解除已有的悬停性质绑定。
                 };
 
             /* 实际应用的参数 */
@@ -156,8 +156,7 @@
                     // 触发 ------------------------------------------------------------------------
 
 
-                    //下面是个例子
-                    //注： 30是top_away_self依自身偏移值
+                    /* 竖直方向 */
                     if(   $(respond_to).scrollTop() >= top_away_self   )
                     {
                         $(float_element).css("top", $(respond_to).scrollTop()-top_away_self+"px");
@@ -171,6 +170,8 @@
                     {
                         $(float_element).css("top", 0+"px");
                     }
+
+                    /* 竖直方向 */
 
 
 

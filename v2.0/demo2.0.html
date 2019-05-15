@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>demo2.0</title>
+</head>
+
+<!-- 库导入 /////////////////////////////////////////////////////////////////////////////-->
+<script src="D:/Workspace/OneDrive/HTML works/LIBRARY_front_end/jquery-3.3.1.min.js"></script>
+<script src="float-element.js" charset="utf-8"></script>
+<!-- 样式 ///////////////////////////////////////////////////////////////////////////////-->
+<link rel="stylesheet" href="demo2.0.css">
+
+<body>
+    <div id="outer-container">
+        <div id="outer-padding-1">50x400</div>
+        <div id="structure-1">
+            <div id="inner-container">
+                <div id="inner-padding-1">20x300</div>
+                <div id="structure-2">
+                    <div id="demo1" class="island">我是悬停元素 <br>200x100</div>
+                </div>
+                <div id="inner-padding-2">20x300</div>
+            </div>
+        </div>
+        <div id="outer-padding-2">50x400</div>
+    </div>
+    structure-1: (400+500+600)x500 <br>
+    structure-2: (200+200+200)x100 <br>
+</body>
+
+<script>
+    $("#demo1").floatElement
+    (
+        {
+            respondTo:     "#inner-container",
+            relativeTo:    "self",
+            listenType:    "once",
+            top:           20,
+            bottom:        50,    //偏移模式下bottom无效
+            left:          10,
+            //right:         100,    //偏移模式下right无效
+        }
+    );
+    $("#inner-container").floatElement
+    (
+        {
+            respondTo:     "#outer-container",
+            relativeTo:    "#outer-container",
+            listenType:    "once",
+            top:           100,
+            bottom:        50,
+            left:          250,
+            right:         100,
+        }
+    );
+</script>
+
+</html>

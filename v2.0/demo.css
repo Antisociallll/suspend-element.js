@@ -1,0 +1,48 @@
+*{
+    box-sizing: border-box;
+    font-family: microsoft yahei ui;
+    font-size: small;
+}
+#demo-container{
+    width: 500px;
+    /*width: 502px;*/
+    height: 500px;
+    /*height: 502px;*/
+    /*border: 1px solid black;*/
+    overflow: auto;
+}
+#pad-height{
+    height: 50px;
+    width: 200px;
+    background-color: rgba(0, 0, 255, 0.1);
+}
+.axis-x{
+    width: 800px;
+    height: 50px;
+    background-color: grey;
+}
+.axis-y{
+    width: 50px;
+    height: 800px;
+    /*height: 200px;*/
+    background-color: coral;
+}
+#info{
+    /*display: none;*/
+    position: fixed;
+    width: 500px;
+    top: 0px;
+    right: 0px;
+}
+#demo7{
+    width: 100px;
+    height: 50px;
+    background-color: lightgreen;
+    float: left;
+}
+#demo8{
+    width: 200px;
+    height: 50px;
+    float: left;
+    background-color: whitesmoke;
+}

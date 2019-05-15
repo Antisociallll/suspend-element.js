@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>专门测试边距模式</title>
+</head>
+
+<script src="D:/Workspace/OneDrive/HTML works/LIBRARY_front_end/jquery-3.3.1.min.js"></script>
+<script src="float-element.js" charset="utf-8"></script>
+
+<style media="screen">
+    *{
+        box-sizing: border-box;
+    }
+    body{
+        margin: 0px;
+    }
+    #container{
+        width: 1000px;
+        height: 900px;
+        overflow: scroll;
+    }
+    #padding1{
+        width: 50px;
+        height: 1200px;
+        background-color: lightgrey;
+    }
+    #padding2{
+        width: 50px;
+        height: 600px;
+        background-color: lightgrey;
+    }
+    #structure{
+        width: 1800px;
+        height: 50px;
+        padding-left: 1300px;
+    }
+    #demo{
+        width: 200px;
+        height: 100px;
+        background-color: coral;
+    }
+</style>
+
+<body>
+    <div id="container">
+        <div id="padding1">50x1200</div>
+        <div id="structure">
+            <div id="demo">200x100</div>
+        </div>
+        <div id="padding2">50x600</div>
+    </div>
+</body>
+
+<script>
+    $("#demo").floatElement
+    (
+        {
+            respondTo:     "#container",
+            relativeTo:    "#container",
+            listenType:    "once",
+            top:           700,
+            bottom:        50,
+            left:          700,
+            right:         30,
+        }
+    );
+</script>
+
+</html>

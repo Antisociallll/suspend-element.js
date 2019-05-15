@@ -1,0 +1,47 @@
+$.fn.floatElement = function(option)
+{
+
+    // 接收到的应用参数 //
+    var applys =
+        {
+            respondTo:     $respond_to,
+            relativeTo:    $relative_to,
+            listenType:    $listen_type,
+            top:           $top,
+            bottom:        $bottom,
+            left:          $left,
+            right:         $right,
+            destroy:       $destroy,
+        };
+
+    // 1.创建or销毁监听 /////////////////////////////////////////////////////////////////////////////
+    if(applys.destroy == true)    //销毁监听
+    {
+        销毁监听。。。
+    }
+    else    //创建监听
+    {
+        // 2.依据相对容器采用悬停类型 ////////////////////////////////////////////////////////////////
+        if(applys.destroy ==)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
